@@ -162,6 +162,11 @@ header {
    .favorite {
       position: absolute;
       cursor: pointer;
+      right: 0;
+   }
+
+   .unfavorite{
+      display: none;
    }
 
 
@@ -184,6 +189,20 @@ header {
    right: 15px;
    background-color: #FFFFFF;
    border: 1px solid #a8f9f9;
+   box-sizing: border-box;
+   border-radius: 8px;
+   height: 32px;
+   width: 32px;
+   cursor: pointer;
+   margin: 0px 5px;
+   
+}
+
+.button-choice {
+   position:absolute;
+   right: 15px;
+   background-color: #8bf37b;
+   border: none;
    box-sizing: border-box;
    border-radius: 8px;
    height: 32px;

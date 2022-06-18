@@ -1,23 +1,41 @@
 import './../app.scss';
 
-function Card  () {
+function Card  (props) {
+
+   const onClickButton = ()=> {
+
+   }
+
    return (
       <div className='sneakers' >
-         <div className='favorite'>
-            <button href="#" className="button-cross _heart">
-               <img width={15} height={15} src="/img/like-heart.svg" alt="heart" />
-            </button>
-         </div>
-         <img width={133} height={112} src="/img/sneakers/1.jpg" alt="Blazer Mid Suede" />
-         <h5>Мужские Кроссовки Nike Blazer Mid Suede</h5>
+
+         {
+            props.favorite 
+            ?  <div className='favorite'>
+                  <button onClick={onClickButton} className="button-cross _heart">
+                     <img width={15} height={15} src="/img/like-heart.svg" alt="heart" />
+                  </button>
+               </div>
+            : <div className='unfavorite'></div>
+         }
+         
+         <img width={133} height={112} src={props.url} alt={props.name} />
+         <h5>{props.name}</h5>
          <div className='sneakers__bottom'>
             <div className='bottom__title'>
                <span>ЦЕНА: </span>
-               <b>12 999 руб.</b>
+               <b>{props.price} руб.</b>
             </div>
-            <button href="#" className="button-cross">
-               <img width={11} height={11} src="/img/cross.svg" alt="cross" />
-            </button>
+            {
+               props.choice 
+               ?  <button href="#" className="button-choice">
+                     <img width={13} height={13} src="/img/check.svg" alt="check" />
+                  </button>
+               :  <button href="#" className="button-cross">
+                     <img width={13} height={13} src="/img/cross.svg" alt="cross" />
+                  </button>
+            }
+            
          </div>
       </div>
    
