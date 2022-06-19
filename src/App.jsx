@@ -1,6 +1,6 @@
-import './app.scss';
+import styles from './app.module.scss';
 import Card from './components/Card/Index'
-import Drawer from './components/DrawerComponent';
+import Drawer from './components/Drawer/DrawerComponent';
 import Header from './components/Header';
 
 const arr = [
@@ -70,23 +70,23 @@ const arr = [
 
 function App() {
   return (
-    <div className="wrapper">
+    <div className={styles.wrapper}>
 
       {/* <Drawer /> */}
       <Header />
 
-      <div className="content">
+      <div className={styles.content}>
 
-        <div className='content__title'>
+        <div className={styles.content__title}>
           <h1 >Все кроссовки</h1>
-          <div className='search'>
+          <div className={styles.search}>
             <img width={13} height={11} src="/img/search.svg" alt="search" />
             <input placeholder='Поиск...' />
 
           </div>
         </div>
 
-        <div className='content__body'>
+        <div className={styles.content__body}>
 
 
 
@@ -101,73 +101,73 @@ function App() {
           }
 
 
-          {/* <div className='sneakers'>
+          {/* <div className={styles.sneakers}>
             <img width={133} height={112} src="/img/sneakers/2.jpg" alt="Nike Air Max" />
             <h5>Мужские Кроссовки Nike Air Max 270</h5>
-            <div className='sneakers__bottom'>
-              <div className='bottom__title'>
+            <div className={styles.sneakers__bottom}>
+              <div className={styles.bottom__title}>
                 <span>ЦЕНА: </span>
                 <b>12 999 руб.</b>
               </div>
-              <button href="#" className="button-cross">
+              <button href="#" className={styles.button_cross}>
                 <img width={11} height={11} src="/img/cross.svg" alt="cross" />
               </button>
             </div>
           </div>
 
 
-          <div className='sneakers'>
+          <div className={styles.sneakers}>
             <img width={133} height={112} src="/img/sneakers/3.jpg" alt="Blazer Mid Suede" />
             <h5>Мужские Кроссовки Nike Blazer Mid Suede</h5>
-            <div className='sneakers__bottom'>
-              <div className='bottom__title'>
+            <div className={styles.sneakers__bottom}>
+              <div className={styles.bottom__title}>
                 <span>ЦЕНА: </span>
                 <b>8 499 руб. </b>
               </div>
-              <button href="#" className="button-cross">
+              <button href="#" className={styles.button_cross}>
                 <img width={11} height={11} src="/img/cross.svg" alt="cross" />
               </button>
             </div>
           </div>
 
 
-          <div className='sneakers'>
+          <div className={styles.sneakers}>
             <img width={133} height={112} src="/img/sneakers/4.jpg" alt="Boku Future Rider" />
             <h5>Кроссовки Puma X Aka Boku Future Rider</h5>
-            <div className='sneakers__bottom'>
-              <div className='bottom__title'>
+            <div className={styles.sneakers__bottom}>
+              <div className={styles.bottom__title}>
                 <span>ЦЕНА: </span>
                 <b>8 999 руб.</b>
               </div>
-              <button href="#" className="button-cross">
+              <button href="#" className={styles.button_cross}>
                 <img width={11} height={11} src="/img/cross.svg" alt="cross" />
               </button>
             </div>
           </div>
 
 
-          <div className='sneakers'>
+          <div className={styles.sneakers}>
             <img width={133} height={112} src="/img/sneakers/4.jpg" alt="Boku Future Rider" />
             <h5>Кроссовки Puma X Aka Boku Future Rider</h5>
-            <div className='sneakers__bottom'>
-              <div className='bottom__title'>
+            <div className={styles.sneakers__bottom}>
+              <div className={styles.bottom__title}>
                 <span>ЦЕНА: </span>
                 <b>8 999 руб.</b>
               </div>
-              <button href="#" className="button-cross">
+              <button href="#" className={styles.button_cross}>
                 <img width={11} height={11} src="/img/cross.svg" alt="cross" />
               </button>
             </div>
           </div>
-          <div className='sneakers'>
+          <div className={styles.sneakers}>
             <img width={133} height={112} src="/img/sneakers/4.jpg" alt="Boku Future Rider" />
             <h5>Кроссовки Puma X Aka Boku Future Rider</h5>
-            <div className='sneakers__bottom'>
-              <div className='bottom__title'>
+            <div className={styles.sneakers__bottom}>
+              <div className={styles.bottom__title}>
                 <span>ЦЕНА: </span>
                 <b>8 999 руб.</b>
               </div>
-              <button href="#" className="button-cross">
+              <button href="#" className={styles.button_cross}>
                 <img width={11} height={11} src="/img/cross.svg" alt="cross" />
               </button>
             </div>

@@ -1,4 +1,4 @@
-import styles from './../app.scss';
+import styles from './Drawer.module.scss';
 
 function Drawer() {
    return (

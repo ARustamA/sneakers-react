@@ -1,30 +1,30 @@
-import styles from './../app.scss';
+import styles from './../app.module.scss';
 
 function Header() {
    return (
       <header >
-         <div className='header__left'>
+         <div className={styles.header__left}>
             <img width={40} height={40} src="/img/logo.png" alt="logo" />
-            <div className='header__info'>
+            <div className={styles.header__info}>
                <h3>REACT SNEAKERS</h3>
                <p>Магазин лучших кроссовок</p>
             </div>
          </div>
 
-         <ul className='header__right'>
-            <li className='margin__li'>
-               <a href="#" className="button__cart">
+         <ul className={styles.header__right}>
+            <li className={styles.margin__li}>
+               <a href="#" className={styles.button__cart}>
                   <img width={20} height={20} src="/img/cart.svg" alt="cart" />
                </a>
                <span> 1205 руб.</span>
             </li>
             <li >
-               <a href="#" className="button__heart">
+               <a href="#" className={styles.button__heart}>
                   <img width={20} height={20} src="/img/heart.svg" alt="heart" />
                </a>
             </li>
             <li>
-               <a href="#" className="button__user">
+               <a href="#" className={styles.button__user}>
                   <img width={20} height={20} src="/img/user.svg" alt="user" />
                </a>
             </li>
