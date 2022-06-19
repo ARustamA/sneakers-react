@@ -184,7 +184,7 @@ header {
    }
 }
 
-.button-cross {
+.button_cross {
    position:absolute;
    right: 15px;
    background-color: #FFFFFF;
@@ -198,7 +198,7 @@ header {
    
 }
 
-.button-choice {
+.button_choice {
    position:absolute;
    right: 15px;
    background-color: #8bf37b;
@@ -287,12 +287,12 @@ header {
 
 }
 
-.cart__item-text {
+.cart__item_text {
    margin-right: 20px;
    margin-bottom: 5px;
 }
 
-.cart__item-remove {
+.cart__item_remove {
    opacity: 0.6;
    transition: opacity 0.15s ease-in-out;
    cursor: pointer;
@@ -306,13 +306,13 @@ header {
 
 // }
 
-.drawer__bottom-li {
+.drawer__bottom_li {
    display: flex;
    align-items: flex-end;
    margin-bottom: 20px !important;
    font-size: 16px;
 
-   .drawer__bottom-line {
+   .drawer__bottom_line {
       flex: 1;
       height: 1px;
       border-bottom: 1px dashed #a8f9f9;

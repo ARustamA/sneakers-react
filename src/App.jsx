@@ -1,5 +1,5 @@
 import './app.scss';
-import Card from './components/CardComponent'
+import Card from './components/Card/Index'
 import Drawer from './components/DrawerComponent';
 import Header from './components/Header';
 

@@ -1,4 +1,4 @@
-import './../app.scss';
+import styles from './Card.module.scss';
 
 function Card  (props) {
 
@@ -7,31 +7,31 @@ function Card  (props) {
    }
 
    return (
-      <div className='sneakers' >
+      <div className={styles.sneakers} >
 
          {
             props.favorite 
-            ?  <div className='favorite'>
-                  <button onClick={onClickButton} className="button-cross _heart">
+            ?  <div className={styles.favorite}>
+                  <button onClick={onClickButton} className={styles.button_cross}>
                      <img width={15} height={15} src="/img/like-heart.svg" alt="heart" />
                   </button>
                </div>
-            : <div className='unfavorite'></div>
+            : <div className={styles.unfavorite}></div>
          }
          
          <img width={133} height={112} src={props.url} alt={props.name} />
          <h5>{props.name}</h5>
-         <div className='sneakers__bottom'>
-            <div className='bottom__title'>
+         <div className={styles.sneakers__bottom}>
+            <div className={styles.bottom__title}>
                <span>ЦЕНА: </span>
                <b>{props.price} руб.</b>
             </div>
             {
                props.choice 
-               ?  <button href="#" className="button-choice">
+               ?  <button href="#" className={styles.button_choice}>
                      <img width={13} height={13} src="/img/check.svg" alt="check" />
                   </button>
-               :  <button href="#" className="button-cross">
+               :  <button href="#" className={styles.button_cross}>
                      <img width={13} height={13} src="/img/cross.svg" alt="cross" />
                   </button>
             }
