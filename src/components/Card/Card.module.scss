@@ -41,14 +41,8 @@
    .favorite {
       position: absolute;
       cursor: pointer;
-      right: 0;
+      
    }
-
-   .unfavorite{
-      display: none;
-   }
-
-
 
    .sneakers__bottom {
       display: flex;
@@ -62,31 +56,24 @@
       }
    }
 }
-
-.button_cross {
-   position:absolute;
-   right: 15px;
-   background-color: #FFFFFF;
-   border: 1px solid #a8f9f9;
-   box-sizing: border-box;
-   border-radius: 8px;
-   height: 32px;
-   width: 32px;
+.button_choice{
    cursor: pointer;
-   margin: 0px 5px;
-   
-}
-
-.button_choice {
-   position:absolute;
-   right: 15px;
-   background-color: #8bf37b;
+   position: absolute;
+   right: 20px;
+   bottom: 5px;
+   background-color: #FFFFFF;
    border: none;
    box-sizing: border-box;
    border-radius: 8px;
-   height: 32px;
-   width: 32px;
+}
+
+.button_like{
    cursor: pointer;
-   margin: 0px 5px;
-   
+   position: absolute;
+   right: 20px;
+   top: 5px;
+   background-color: #FFFFFF;
+   border: none;
+   box-sizing: border-box;
+   border-radius: 8px;
 }
