@@ -61,16 +61,19 @@ function App() {
   }
 
   const addItemToFavorite = async (obj) => {
-    if(favorites.find( (favObj) => favObj.id === obj.id)){
-      axios.delete(`https://62b2813420cad3685c8edbad.mockapi.io/favorites/${obj.id}`)
-      setFavorites(prev => prev.filter(item => item.id !== obj.id))}
-    else{
-      const { data } = await axios.post('https://62b2813420cad3685c8edbad.mockapi.io/favorites', obj)
-      setFavorites(prev =>[...prev, data])
+    try{
+      if(favorites.find( (favObj) => favObj.id === obj.id)){
+        axios.delete(`https://62b2813420cad3685c8edbad.mockapi.io/favorites/${obj.id}`)
+        setFavorites(prev => prev.filter(item => item.id !== obj.id))}
+      else{
+        const { data } = await axios.post('https://62b2813420cad3685c8edbad.mockapi.io/favorites', obj)
+        setFavorites(prev =>[...prev, data])
+      }
+      } catch(error){
+        alert('Не удалось добавить в избранное')
+      }
     }
   
-
-  }
 
   return (
     <div className={styles.wrapper}>
