@@ -1,6 +1,6 @@
 import styles from './Drawer.module.scss';
 let sumPrice=0
-function Drawer({onClose, items =[]}) {
+function Drawer({onClose, deleteItem, items =[]}) {
    return (
       <div className={styles.overlay}>
          <div className={styles.drawer}>
@@ -22,9 +22,10 @@ function Drawer({onClose, items =[]}) {
                         <b>{obj.price} руб.</b>
                      </div>
                      {sumPrice = sumPrice + obj.price}
-                     <img className={styles.cart__item_remove} src="/img/btn-remove.svg" alt="remove" />
+                     <img onClick={()=> deleteItem(obj.id)} className={styles.cart__item_remove} src="/img/btn-remove.svg" alt="remove" />
                   </div> 
-               ))}
+               ))
+               }
                   
 
             </div>
