@@ -3,7 +3,7 @@ import axios from 'axios';
 import styles from './app.module.scss';
 import Drawer from './components/Drawer/DrawerComponent';
 import Header from './components/Header/Header';
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import {  Route, Routes } from 'react-router-dom';
 import Favorites from './components/Favorites/Favorites';
 import Home from './components/HomePage/Home';
 
@@ -26,7 +26,14 @@ function App() {
 
     axios.get('https://62b2813420cad3685c8edbad.mockapi.io/cart')
       .then((response) => { setCartItems(response.data) })
+
+    axios.get('https://62b2813420cad3685c8edbad.mockapi.io/favorites')
+      .then((response) => { setFavorites(response.data) })
+
     }, []);
+
+    
+    
 
     // fetch('https://62b2813420cad3685c8edbad.mockapi.io/items')
     //     .then((response) => {
@@ -49,14 +56,20 @@ function App() {
   const searchItem = (event) => {
     setSearchValue(event.target.value)
   }
-
-  const addItemToFavorite = (obj) => {
-    axios.post('https://62b2813420cad3685c8edbad.mockapi.io/favorites', obj)
-    setFavorites(prev => [...prev, obj])
-  }
-
   const onClear = () => {
     setSearchValue('')
+  }
+
+  const addItemToFavorite = async (obj) => {
+    if(favorites.find( (favObj) => favObj.id === obj.id)){
+      axios.delete(`https://62b2813420cad3685c8edbad.mockapi.io/favorites/${obj.id}`)
+      setFavorites(prev => prev.filter(item => item.id !== obj.id))}
+    else{
+      const { data } = await axios.post('https://62b2813420cad3685c8edbad.mockapi.io/favorites', obj)
+      setFavorites(prev =>[...prev, data])
+    }
+  
+
   }
 
   return (
@@ -70,19 +83,25 @@ function App() {
           <Header onClickCard={() => setCardOpen(true)} />
 
 
-{/* 
-          <Route  
-            path='/favorites'> element={<Favorites />}
-          
-          </Route>                    */}
+        <Routes>
+          <Route  path="/" 
+                  element={<Home 
+                            items={items} 
+                            searchValue={searchValue}
+                            onClear={onClear}
+                            searchItem={searchItem}
+                            addItemToCard={addItemToCard}
+                            addItemToFavorite={addItemToFavorite}
+                            deleteItemToCard={deleteItemToCard}/>
+          } />
 
-      <Home items={items} 
-            searchValue={searchValue}
-            onClear={onClear}
-            searchItem={searchItem}
-            addItemToCard={addItemToCard}
-            addItemToFavorite={addItemToCard}
-            deleteItemToCard={deleteItemToCard}/>
+          <Route  path="/favorites"
+                  element={<Favorites 
+                            items={favorites}
+                            addItemToFavorite={addItemToFavorite} />}
+          />                
+        </Routes>
+      
       
       
     </div>
