@@ -1,0 +1,33 @@
+header {
+   border-bottom: 1px solid #d3fafa;
+   padding: 30px;
+   display: flex;
+   justify-content: space-between;
+
+   .header__left {
+      display: flex;
+      align-items: center;
+
+      h3,
+      p {
+         margin: 0 20px;
+      }
+
+      p {
+         opacity: 0.5;
+      }
+   }
+
+   .header__right {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      li {
+         margin: 10px;
+         cursor: pointer;
+      }
+
+   }
+
+}

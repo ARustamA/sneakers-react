@@ -1,21 +1,23 @@
 import React from 'react';
 import styles from './Card.module.scss';
 
-function Card({choice, favorite, url, name, price, id, onAddToFavorite, onAddToCard}) {
+function Card({ favorite, url, name, price, id, onAddToFavorite, onAddToCard, deleteItem}) {
 
-   const [isAdded, setIsAdded] = React.useState(choice);
+   const [isAdded, setIsAdded] = React.useState(false);
+   const [isLike, setIsLike] = React.useState(false);
+
    const onClickPlus = () => {
       setIsAdded(!isAdded)
-      //alert("you add sneakers to card")
+      
       onAddToCard({url, name, price, id})
+      // deleteItem()
       
    }
 
-   const [isLike, setIsLike] = React.useState(favorite);
    const onClickHeart = () => {
       setIsLike(!isLike)
       onAddToFavorite({url, name, price, id})
-     // alert("you add sneakers to favorite list")
+   
    }
 
    return (
