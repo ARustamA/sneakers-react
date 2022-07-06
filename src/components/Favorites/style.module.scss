@@ -1,6 +1,16 @@
 .favorites{
-   h1{
-      margin: 30px 0px 30px 30px;
+   h1,h2,span{
+      margin: 30px 0px 50px 50px;
+   }
+   b{
+         letter-spacing: 0.1em;
+   }
+   padding-bottom: 70px;
+   .sadImg{
+      display: flex;
+      justify-content: space-evenly;
+      margin: 30px 80px ;
+      
    }
 }
 

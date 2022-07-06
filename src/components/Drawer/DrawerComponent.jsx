@@ -16,12 +16,11 @@ function Drawer({ onClose, deleteItem, items = [] }) {
                items.length > 0 
                ? 
                <div className={styles.items}>
-                  <div >
-
+                  <>
                   {  items.map((obj) => (
 
-                        <div className={styles.cart__item}>
-                           <img width={100} height={100} src={obj.url} alt="sneakers" />
+                        <div key={obj.id} className={styles.cart__item}>
+                           <img width={70} height={70} src={obj.url} alt="sneakers" />
                            <div className={styles.cart__item_text}>
                               <p>{obj.name}</p>
                               <b>{obj.price} руб.</b>
@@ -32,7 +31,7 @@ function Drawer({ onClose, deleteItem, items = [] }) {
                         </div>
                      ))
                   }
-               </div>
+               </>
 
                <CardBottom sumPrice={sumPrice} />
                </div> 

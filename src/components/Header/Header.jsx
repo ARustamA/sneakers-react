@@ -27,7 +27,7 @@ function Header({onClickCard}) {
                </Link>
             </li>
             <li>
-               <Link to='/'>
+               <Link to='/orders'>
                   <img width={20} height={20} src="/img/user.svg" alt="user" 
                      className={styles.button__user}/>
                </Link>
