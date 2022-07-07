@@ -3,10 +3,12 @@ import styles from './Drawer.module.scss';
 import Info from "../info";
 import React from 'react'
 import AppContext from '../../context'
+import DrawerItems from './DrawerItems';
 
 
 let sumPrice = 0
-function Drawer({ onClose, deleteItem, items = [] }) {
+function Drawer({ onClose, items = [] }) {
+
    const { setCartItems } = React.useContext(AppContext)
    const [isPaid, setIsPaid] = React.useState(false)
 
@@ -29,22 +31,8 @@ function Drawer({ onClose, deleteItem, items = [] }) {
                items.length > 0
                   ?
                   <div className={styles.items}>
-                     <>
-                        {items.map((obj) => (
 
-                           <div key={obj.id} className={styles.cart__item}>
-                              <img width={70} height={70} src={obj.url} alt="sneakers" />
-                              <div className={styles.cart__item_text}>
-                                 <p>{obj.name}</p>
-                                 <b>{obj.price} руб.</b>
-                              </div>
-                              {/* {obj.id ?  (sumPrice = sumPrice + obj.price) : sumPrice=0} */}
-
-                              <img onClick={() => deleteItem(obj.id)} className={styles.cart__item_remove} src="/img/btn-remove.svg" alt="remove" />
-                           </div>
-                        ))
-                        }
-                     </>
+                     <DrawerItems items={items} />
                      <div className={styles.but}>
                         <button onClick={onClose} className={styles.button}>
                            <p>Вернуться к покупкам</p>
@@ -52,11 +40,12 @@ function Drawer({ onClose, deleteItem, items = [] }) {
                         </button>
                      </div>
                      <CardBottom sumPrice={sumPrice} onClickOrder={onClickOrder} />
+
                   </div>
 
-                  : 
+                  :
                   <Info
-                     name={isPaid  ? 'Заказ оформлен!' : 'Корзина пустая'}
+                     name={isPaid ? 'Заказ оформлен!' : 'Корзина пустая'}
                      image={isPaid ? "/img/image 8.jpg" : "/img/card.png"}
                      description={isPaid ? `Ваш заказ 123 скоро будет передан курьерской доставке` :
                         'Добавьте хотя бы одну пару кроссовок, чтобы сделать заказ.'
