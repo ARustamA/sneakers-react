@@ -2,16 +2,21 @@ import styles from './style.module.scss';
 import Card from './../Card/Index'
 import Title from '../TitleApp';
 
+
+
 function Home({   items,
                   searchValue,
                   onClear,
-                  cartItems,
+                  
                   searchItem,
                   addItemToCard,
                   addItemToFavorite,
                   deleteItemToCard,
                   isLoading }) {
    
+   
+
+
    const renderItems =()=>{
       
       const filterItems= items.filter((obj) => 
@@ -24,7 +29,7 @@ function Home({   items,
                      onAddToFavorite={(item) => addItemToFavorite(item)}
                      onAddToCard={(item) => addItemToCard(item)}
                      deleteItem={(item) => deleteItemToCard(item)}
-                     isAddToCard={cartItems.some((item)=>item.id===obj.id )}
+                     // isAddToCard={isItemAddedCart(obj && obj.id)}
                      isLoading={isLoading}
                      {...obj}/>
       )))

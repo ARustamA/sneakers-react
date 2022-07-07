@@ -72,3 +72,18 @@
     "id": 12
   }
 ]
+
+
+
+ <ul>
+            <li className={styles.drawer__bottom_li}>
+               <span> Итого: </span>
+               <div className={styles.drawer__bottom_line}></div>
+               <b>10 руб. </b>
+            </li>
+            <li className={styles.drawer__bottom_li}>
+               <span>Налог 10%: </span>
+               <div className={styles.drawer__bottom_line}></div>
+               {/* <b>{Number((props.sumPrice /100 * 10).toFixed(2))} руб. </b> */}
+            </li>
+         </ul>

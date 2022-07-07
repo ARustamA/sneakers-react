@@ -1,14 +1,19 @@
 import { Link } from 'react-router-dom';
 import styles from '../Favorites/style.module.scss';
 import Card from './../Card/Index'
+import AppContext from '../../context'
+import React from 'react';
 
-function Favorites({ items, addItemToCard, addItemToFavorite}) {
+
+function Favorites({ addItemToCard, addItemToFavorite}) {
+
+   const {favorites} = React.useContext(AppContext)
 
    return (
       <div className={styles.favorites}>
          <h1>Мои избранные</h1>
          
-         { (items.length===0)
+         { (favorites.length===0)
             ?<>
             <div className={styles.sadImg}>
                <h2>Извините, Вы ничего не добавили!</h2>
@@ -20,7 +25,7 @@ function Favorites({ items, addItemToCard, addItemToFavorite}) {
             </span>
             </>
             :  <div className={styles.card}>
-               {items.map((obj) => (
+               {favorites.map((obj) => (
                      <Card
                         name={obj.name}
                         price={obj.price}

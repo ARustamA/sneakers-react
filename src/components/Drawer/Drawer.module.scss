@@ -2,6 +2,7 @@
 .drawer {
    display: flex;
    flex-direction: column;
+   
    position: absolute;
    width: 420px;
    right: 0;
@@ -45,6 +46,7 @@
    
    display: flex;
    flex-direction: column;
+   
    align-items: center;
    
    font-size: 18px;
@@ -85,12 +87,13 @@
 
 
 .items {
-   flex: 1;
+   
    overflow: auto;
 }
 
 .cart__item {
    display: flex;
+   
    align-items: center;
    border: 1px solid #a8f9f9;
    border-radius: 20px;
@@ -178,4 +181,10 @@
 
    }
 
+}
+
+.but{
+   position: absolute;
+   bottom: 40px;
+   left: 140px;
 }

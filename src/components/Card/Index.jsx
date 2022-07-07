@@ -1,18 +1,21 @@
 import React from 'react';
 import styles from './Card.module.scss';
 import ContentLoader from "react-content-loader";
+import AppContext from '../../context'
+
 
 function Card({ url, name, price, id, onAddToFavorite, onAddToCard, 
-               isAddToCard=false, isFavorite=false, loading, deleteItem}) {
+               isFavorite=false, loading, deleteItem}) {
 
-   const [isAdded, setIsAdded] = React.useState(isAddToCard);
+   // const [isAdded, setIsAdded] = React.useState(isAddToCard);
    const [isLike, setIsLike] = React.useState(isFavorite);
+   const {isItemAddedCart} = React.useContext(AppContext)
 
    const onClickPlus = () => {
-      setIsAdded(!isAdded)
-      
+         
+      // isItemAddedCart(id) ? deleteItem(id) : 
       onAddToCard({url, name, price, id})
-      deleteItem()
+      
    }
 
    const onClickHeart = () => {
@@ -63,7 +66,7 @@ function Card({ url, name, price, id, onAddToFavorite, onAddToCard,
                   <button className={styles.button_choice} onClick={onClickPlus}>
                      <img width={17} height={17} alt="choice" src=
                         {
-                           isAdded ? "/img/check.svg" : "/img/cross.svg"
+                           isItemAddedCart(id)  ? "/img/check.svg" : "/img/cross.svg"
                         } />
                   </button>
 

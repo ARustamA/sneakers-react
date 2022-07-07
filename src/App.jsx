@@ -7,6 +7,9 @@ import {  Route, Routes } from 'react-router-dom';
 import Favorites from './components/Favorites/Favorites';
 import Home from './components/HomePage/Home';
 import Orders from './components/Orders/Orders';
+import AppContext from './context'
+
+
 
 function App() {
 
@@ -77,42 +80,52 @@ function App() {
         alert('Не удалось добавить в избранное')
       }
     }
-    
+
+    const isItemAddedCart = (id) =>{
+      return cartItems.some((item)=>item.id=== id)
+    }
+
   return (
-    <div className={styles.wrapper}>
+    
+    <AppContext.Provider value={ { items, cartItems,  favorites, isItemAddedCart, setCardOpen, setCartItems } }>
 
-      {cardOpen && 
-          <Drawer items={cartItems} 
-                  deleteItem={deleteItemToCard} 
-                  onClose={() => setCardOpen(false)} /> }
+        <div className={styles.wrapper}>
 
-          <Header onClickCard={() => setCardOpen(true)} />
+        {cardOpen && 
+            <Drawer items={cartItems} 
+                    deleteItem={deleteItemToCard} 
+                    onClose={() => setCardOpen()} /> }
 
-        <Routes>
-          <Route  path="/" 
-                  element={<Home 
-                            items={items} 
-                            searchValue={searchValue}
-                            onClear={onClear}
-                            cartItems={cartItems}
-                            searchItem={searchItem}
-                            addItemToCard={addItemToCard}
-                            addItemToFavorite={addItemToFavorite}
-                            deleteItemToCard={deleteItemToCard}
-                            isLoading={isLoading}/>
-          } />
+            <Header onClickCard={() => setCardOpen(true)} />
 
-          <Route  path="/favorites"
-                  element={<Favorites 
-                            items={favorites}
-                            addItemToCard={addItemToCard}
-                            addItemToFavorite={addItemToFavorite} />}/>   
-          <Route  path="/orders"
-                            element={<Orders 
-                                      items={[...items]}
-                                    />}/>                          
-        </Routes>
-    </div>
+          <Routes>
+            <Route  path="/" 
+                    element={<Home 
+                              items={items} 
+                              searchValue={searchValue}
+                              onClear={onClear}
+                              cartItems={cartItems}
+                              searchItem={searchItem}
+                              addItemToCard={addItemToCard}
+                              addItemToFavorite={addItemToFavorite}
+                              deleteItemToCard={deleteItemToCard}
+                              isLoading={isLoading}/>
+            } />
+
+            <Route  path="/favorites"
+                    element={<Favorites 
+                              addItemToCard={addItemToCard}
+                              addItemToFavorite={addItemToFavorite} />}/>   
+            <Route  path="/orders"
+                              element={<Orders 
+                                        items={[...items]}
+                                      />}/>                          
+          </Routes>
+        </div>
+
+    </AppContext.Provider>
+
+
   )
 }
 

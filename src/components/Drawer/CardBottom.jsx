@@ -16,7 +16,7 @@ function CardBottom(props) {
                      <b>{Number((props.sumPrice /100 * 10).toFixed(2))} руб. </b>
                   </li>
                </ul>
-               <button href="#" className={styles.button}>
+               <button onClick={props.onClickOrder}  className={styles.button}>
                <p>Оформить заказ</p>
                <img className={styles.but_img}width={20} height={20} src="/img/pointer-right.svg" alt="pointer" />
             </button>
