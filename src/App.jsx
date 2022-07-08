@@ -1,14 +1,15 @@
 import React from 'react';
 import axios from 'axios';
-import styles from './app.module.scss';
+import { Route, Routes } from 'react-router-dom';
+
 import Drawer from './components/Drawer/DrawerComponent';
 import Header from './components/Header/Header';
-import { Route, Routes } from 'react-router-dom';
 import Favorites from './components/Favorites/Favorites';
 import Home from './components/HomePage/Home';
 import Orders from './components/Orders/Orders';
-import AppContext from './context'
 
+import AppContext from './context'
+import styles from './app.module.scss';
 
 
 function App() {
@@ -29,20 +30,16 @@ function App() {
     async function generalData() {
       setIsLoading(true)
       const itemsResponse = await axios.get('https://62b2813420cad3685c8edbad.mockapi.io/items')
-
       const cartItemsResponse = await axios.get('https://62b2813420cad3685c8edbad.mockapi.io/cart')
-
       const favoritesResponse = await axios.get('https://62b2813420cad3685c8edbad.mockapi.io/favorites')
 
       setIsLoading(false)
       setCartItems(cartItemsResponse.data)
       setFavorites(favoritesResponse.data)
       setItems(itemsResponse.data)
-
     }
     generalData()
   }, []);
-
   const searchItem = (event) => {
     setSearchValue(event.target.value)
   }
@@ -63,9 +60,7 @@ function App() {
     } catch (error) {
       alert('Не удалось добавить в корзину')
     }
-
   }
-
   const deleteItemToCard = (id) => {
     axios.delete(`https://62b2813420cad3685c8edbad.mockapi.io/cart/${id}`)
     setCartItems(prev => prev.filter(item => item.id !== id))
@@ -85,52 +80,38 @@ function App() {
       alert('Не удалось добавить в избранное')
     }
   }
-
   const isItemAddedCart = (id) => {
     return cartItems.some((item) => item.id === id)
   }
 
   return (
-
-    <AppContext.Provider value={{
-      items, cartItems, favorites,
-      isItemAddedCart, setCardOpen, setCartItems, deleteItemToCard
-    }}>
+    <AppContext.Provider 
+    value={{
+      items, cartItems, favorites, addItemToFavorite, addItemToCard,
+      isItemAddedCart, setCardOpen, setCartItems, deleteItemToCard}}>
 
       <div className={styles.wrapper}>
-
         {cardOpen &&
           <Drawer items={cartItems}
-
             onClose={() => setCardOpen()} />}
-
-        <Header onClickCard={() => setCardOpen(true)} />
+          <Header onClickCard={() => setCardOpen(true)} />
 
         <Routes>
           <Route path="/"
             element={<Home
-              items={items}
               searchValue={searchValue}
               onClear={onClear}
-              cartItems={cartItems}
               searchItem={searchItem}
-              addItemToCard={addItemToCard}
-              addItemToFavorite={addItemToFavorite}
-              deleteItemToCard={deleteItemToCard}
               isLoading={isLoading} />
             } />
-
           <Route path="/favorites"
             element={<Favorites
               addItemToCard={addItemToCard}
               addItemToFavorite={addItemToFavorite} />} />
           <Route path="/orders"
-            element={<Orders
-              items={[...items]}
-            />} />
+            element={<Orders />} />
         </Routes>
       </div>
-
     </AppContext.Provider>
   )
 }

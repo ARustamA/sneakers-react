@@ -8,15 +8,15 @@ function CardBottom(props) {
                   <li className={styles.drawer__bottom_li}>
                      <span> Итого: </span>
                      <div className={styles.drawer__bottom_line}></div>
-                     <b>{props.sumPrice} руб. </b>
+                     <b>{props.cartSum} руб. </b>
                   </li>
                   <li className={styles.drawer__bottom_li}>
                      <span>Налог 10%: </span>
                      <div className={styles.drawer__bottom_line}></div>
-                     <b>{Number((props.sumPrice /100 * 10).toFixed(2))} руб. </b>
+                     <b>{Number((props.cartSum /100 * 10).toFixed(2))} руб. </b>
                   </li>
                </ul>
-               <button onClick={props.onClickOrder}  className={styles.button}>
+               <button disabled={props.isLoading} onClick={props.onClickOrder}  className={styles.button}>
                <p>Оформить заказ</p>
                <img className={styles.but_img}width={20} height={20} src="/img/pointer-right.svg" alt="pointer" />
             </button>

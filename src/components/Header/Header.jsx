@@ -1,7 +1,13 @@
 import styles from '../Header/style.module.scss';
 import {  Link } from 'react-router-dom';
+import React from 'react'
+import AppContext from '../../context'
 
 function Header({onClickCard}) {
+   const{ cartItems} = React.useContext(AppContext)
+
+   const cartSum = cartItems.reduce((sum, obj)=>sum+obj.price, 0)
+
    return (
       <header >
          <Link to='/'>
@@ -18,7 +24,7 @@ function Header({onClickCard}) {
             <li onClick={onClickCard} className={styles.margin__li}>
                <Link to='/'>
                   <img src="/img/cart.svg" alt="cart" className={styles.button__cart}/>
-                  <span> 1205 руб.</span>
+                  <span> {cartSum} руб.</span>
                </Link>
                </li>
             <li >

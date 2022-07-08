@@ -27,10 +27,7 @@ function Favorites({ addItemToCard, addItemToFavorite}) {
             :  <div className={styles.card}>
                {favorites.map((obj) => (
                      <Card
-                        name={obj.name}
-                        price={obj.price}
-                        url={obj.imgUrl}
-                        id={obj.id}
+                        {...obj}
                         key={obj.id}
                         isFavorite={true}
                         onAddToFavorite={addItemToFavorite}

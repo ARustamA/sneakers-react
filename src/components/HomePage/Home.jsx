@@ -1,22 +1,16 @@
 import styles from './style.module.scss';
 import Card from './../Card/Index'
 import Title from '../TitleApp';
+import React from 'react'
+import AppContext from '../../context'
 
 
-
-function Home({   items,
-                  searchValue,
+function Home({   searchValue,
                   onClear,
-                  
                   searchItem,
-                  addItemToCard,
-                  addItemToFavorite,
-                  deleteItemToCard,
-                  isLoading }) {
-   
-   
-
-
+                  isLoading}) 
+{
+   const { items, addItemToFavorite, addItemToCard, deleteItemToCard} = React.useContext(AppContext)
    const renderItems =()=>{
       
       const filterItems= items.filter((obj) => 
