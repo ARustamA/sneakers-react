@@ -8,13 +8,14 @@ function Card({ url, name, price, id, onAddToFavorite, onAddToCard,
    isFavorite = false, loading, }) {
    const [isLike, setIsLike] = React.useState(isFavorite);
    const { isItemAddedCart } = React.useContext(AppContext)
+   const item = { url, parentId:id, name, price, id }
 
    const onClickPlus = () => {
-      onAddToCard({ url, name, price, id })
+      onAddToCard(item)
    }
    const onClickHeart = () => {
       setIsLike(!isLike)
-      onAddToFavorite({ url, name, price, id })
+      onAddToFavorite(item)
    }
    return (
       <div className={styles.sneakers} >

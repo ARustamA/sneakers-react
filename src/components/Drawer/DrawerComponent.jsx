@@ -1,41 +1,34 @@
-import CardBottom from './CardBottom';
-import styles from './Drawer.module.scss';
-import Info from "../info";
 import React from 'react'
+import axios from "axios";
+
+import CardBottom from './CardBottom';
+import Info from "../info";
+
 import AppContext from '../../context'
-import axios  from "axios";
+import styles from './Drawer.module.scss';
 
-
-function Drawer({ onClose, items = [] }) {
-   
-   const { cartItems, setCartItems, deleteItemToCard} = React.useContext(AppContext)
+function Drawer({ onClose, items = [], open}) {
+   const { cartItems, setCartItems, deleteItemToCard } = React.useContext(AppContext)
    const [isPaid, setIsPaid] = React.useState(false)
    const [isLoading, setIsLoading] = React.useState(false)
-   
    const [orderId, setOrderId] = React.useState(null)
-   const cartSum = cartItems.reduce((sum, obj)=>sum+obj.price, 0)
+   const cartSum = cartItems.reduce((sum, obj) => sum + obj.price, 0)
 
    const onClickOrder = async () => {
       try {
          setIsLoading(true)
-         const {data} = await axios.post('https://62b2813420cad3685c8edbad.mockapi.io/orders',
-                              {items: cartItems})
-            
-            setOrderId(data.id)
-            setIsPaid(true)
-            setCartItems([])
-            
-      } catch (error) {
-         alert('Не удалось создать заказ!')
-      }
+         const { data } = await axios.post('https://62b2813420cad3685c8edbad.mockapi.io/orders',
+            { items: cartItems })
+         setOrderId(data.id)
+         setIsPaid(true)
+         setCartItems([])
+      } catch (error) { alert('Не удалось создать заказ!')
+         console.error(error) }
       setIsLoading(false)
    }
-
-
-   
-
    return (
       <div className={styles.overlay}>
+         {/* {`${styles.overlay}${open ? styles.overlayVisible : ''}`}> */}
          <div className={styles.drawer}>
             <h2>
                Корзина

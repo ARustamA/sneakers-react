@@ -17,6 +17,7 @@ function Orders ({ }) {
             // setOrderItems(data.reduce((prev,obj)=>[...prev, ...obj.items],[]))
          } catch (error) {
             alert('Не удалось выгрузить данные с сервера') 
+            console.error(error)
          }
       } )()
    }, [])

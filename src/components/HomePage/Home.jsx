@@ -1,9 +1,10 @@
-import styles from './style.module.scss';
+import React from 'react'
+
 import Card from './../Card/Index'
 import Title from '../TitleApp';
-import React from 'react'
-import AppContext from '../../context'
 
+import AppContext from '../../context'
+import styles from './style.module.scss';
 
 function Home({   searchValue,
                   onClear,
