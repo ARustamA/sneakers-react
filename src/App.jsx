@@ -115,18 +115,18 @@ function App() {
           <Header onClickCard={() => setCardOpen(true)} />
 
         <Routes>
-          <Route path="/"
+          <Route path=""
             element={<Home
               searchValue={searchValue}
               onClear={onClear}
               searchItem={searchItem}
               isLoading={isLoading} />
             } />
-          <Route path="/favorites"
+          <Route path="favorites"
             element={<Favorites
               addItemToCard={addItemToCard}
               addItemToFavorite={addItemToFavorite} />} />
-          <Route path="/orders"
+          <Route path="orders"
             element={<Orders />} />
         </Routes>
       </div>

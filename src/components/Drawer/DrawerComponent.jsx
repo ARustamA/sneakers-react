@@ -33,7 +33,7 @@ function Drawer({ onClose, items = [], open}) {
             <h2>
                Корзина
                <img onClick={onClose} className={styles.cart__item_remove}
-                  src="/img/btn-remove.svg" alt="remove" />
+                  src="/sneakers-react/img/btn-remove.svg" alt="remove" />
             </h2>
             {
                items.length > 0
@@ -49,7 +49,7 @@ function Drawer({ onClose, items = [], open}) {
                                  <b>{obj.price} руб.</b>
                               </div>
 
-                              <img onClick={() => deleteItemToCard(obj.id)} className={styles.cart__item_remove} src="/img/btn-remove.svg" alt="remove" />
+                              <img onClick={() => deleteItemToCard(obj.id)} className={styles.cart__item_remove} src="/sneakers-react/img/btn-remove.svg" alt="remove" />
                            </div>
                         ))
                         }
@@ -65,7 +65,7 @@ function Drawer({ onClose, items = [], open}) {
                   :
                   <Info
                      name={isPaid ? 'Заказ оформлен!' : 'Корзина пустая'}
-                     image={isPaid ? "/img/image 8.jpg" : "/img/card.png"}
+                     image={isPaid ? "/sneakers-react/img/image 8.jpg" : "/sneakers-react/img/card.png"}
                      description={isPaid
                         ? `Ваш заказ №${orderId} скоро будет передан курьерской доставке`
                         : 'Добавьте хотя бы одну пару кроссовок, чтобы сделать заказ.'}

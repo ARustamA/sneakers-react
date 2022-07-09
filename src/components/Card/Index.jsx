@@ -41,8 +41,8 @@ function Card({ url, name, price, id, onAddToFavorite, onAddToCard,
             {onAddToFavorite &&
                <button className={styles.button_like} onClick={onClickHeart}>
                   {<img width={20} height={20} alt="choice" src=
-                     {isLike ? "/img/like-heart.svg"
-                        : "/img/heart.svg"} />}
+                     {isLike ? "sneakers-react/img/like-heart.svg"
+                        : "sneakers-react/img/heart.svg"} />}
                </button>}
             <img src={url} width="100%" height={130} alt={name} />
             <h5>{name}</h5>
@@ -55,7 +55,7 @@ function Card({ url, name, price, id, onAddToFavorite, onAddToCard,
                   <button className={styles.button_choice} onClick={onClickPlus}>
                      <img width={17} height={17} alt="choice" src=
                         {
-                           isItemAddedCart(id) ? "/img/check.svg" : "/img/cross.svg"
+                           isItemAddedCart(id) ? "sneakers-react/img/check.svg" : "sneakers-react/img/cross.svg"
                         } />
                   </button>}</>
             </div>

@@ -13,7 +13,7 @@ const Info = ({ name, image, description, buttonName }) => {
             <p>{description}</p>
          </div>
          <button className={styles.button} onClick={() => setCardOpen(false)}>
-            <img width={20} height={20} src="/img/pointer-left.svg" alt="pointer" />
+            <img width={20} height={20} src="/sneakers-react/img/pointer-left.svg" alt="pointer" />
             <p>{buttonName}</p>
          </button>
       </div>

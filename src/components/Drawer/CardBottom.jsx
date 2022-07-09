@@ -18,7 +18,7 @@ function CardBottom(props) {
                </ul>
                <button disabled={props.isLoading} onClick={props.onClickOrder}  className={styles.button}>
                <p>Оформить заказ</p>
-               <img className={styles.but_img}width={20} height={20} src="/img/pointer-right.svg" alt="pointer" />
+               <img className={styles.but_img}width={20} height={20} src="/sneakers-react/img/pointer-right.svg" alt="pointer" />
             </button>
          </div>
             

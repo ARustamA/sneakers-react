@@ -17,7 +17,7 @@ function Favorites({ addItemToCard, addItemToFavorite}) {
             ?<>
             <div className={styles.sadImg}>
                <h2>Извините, Вы ничего не добавили!</h2>
-               <img width={90} height={90} src="../img/image 9.png" alt="sadSmile" />
+               <img width={90} height={90} src="sneakers-react/img/image 9.png" alt="sadSmile" />
             </div>
             
             <span>
@@ -27,6 +27,7 @@ function Favorites({ addItemToCard, addItemToFavorite}) {
             :  <div className={styles.card}>
                {favorites.map((obj) => (
                      <Card
+                        
                         {...obj}
                         key={obj.id}
                         isFavorite={true}
