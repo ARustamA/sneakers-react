@@ -30,12 +30,12 @@ function App() {
     async function generalData() {
       try {
         setIsLoading(true)
-    const [itemsResponse, cartItemsResponse, favoritesResponse] =
+        const [itemsResponse, cartItemsResponse, favoritesResponse] =
           await Promise.all([
             axios.get('https://62b2813420cad3685c8edbad.mockapi.io/items'),
             axios.get('https://62b2813420cad3685c8edbad.mockapi.io/cart'),
             axios.get('https://62b2813420cad3685c8edbad.mockapi.io/favorites')
-                ])
+          ])
         setIsLoading(false)
         setCartItems(cartItemsResponse.data)
         setFavorites(favoritesResponse.data)
@@ -56,14 +56,14 @@ function App() {
   //добавление в корзину
   const addItemToCard = async (obj) => {
     try {
-      const findItem =cartItems.find((item) => item.parentId === obj.id)
+      const findItem = cartItems.find((item) => item.parentId === obj.id)
       if (findItem) {
         setCartItems((prev) => prev.filter((item) => item.parentId !== obj.id))
         await axios.delete(`https://62b2813420cad3685c8edbad.mockapi.io/cart/${findItem.id}`)
-        
+
       }
       else {
-        const {data} =  await axios.post('https://62b2813420cad3685c8edbad.mockapi.io/cart', obj)
+        const { data } = await axios.post('https://62b2813420cad3685c8edbad.mockapi.io/cart', obj)
         setCartItems(prev => [...prev, data])
       }
     } catch (error) {
@@ -72,7 +72,7 @@ function App() {
     }
   }
   //удаление с корзины
-  const deleteItemToCard = async(parentId) => {
+  const deleteItemToCard = async (parentId) => {
     try {
       await axios.delete(`https://62b2813420cad3685c8edbad.mockapi.io/cart/${parentId}`)
       setCartItems((prev) => prev.filter((item) => item.id !== parentId))
@@ -103,16 +103,17 @@ function App() {
   }
 
   return (
-    <AppContext.Provider 
-    value={{
-      items, cartItems, favorites, addItemToFavorite, addItemToCard,
-      isItemAddedCart, setCardOpen, setCartItems, deleteItemToCard}}>
+    <AppContext.Provider
+      value={{
+        items, cartItems, favorites, addItemToFavorite, addItemToCard,
+        isItemAddedCart, setCardOpen, setCartItems, deleteItemToCard
+      }}>
 
       <div className={styles.wrapper}>
         {cardOpen &&
           <Drawer items={cartItems}
             onClose={() => setCardOpen()} />}
-          <Header onClickCard={() => setCardOpen(true)} />
+        <Header onClickCard={() => setCardOpen(true)} />
 
         <Routes>
           <Route path=""
