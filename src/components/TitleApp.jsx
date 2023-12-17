@@ -1,23 +1,27 @@
 import styles from './../app.module.scss';
+import { ReactComponent as Search } from './../assets/img/search.svg';
+import { ReactComponent as Delete } from './../assets/img/btn-delete.svg';
 
-function Title({searchValue, onClear, searchItem}) {
+function Title({ searchValue, onClear, searchItem }) {
    return (
       <div className={styles.content__title}>
 
          <h1>{searchValue ? `Поиск по запросу: "${searchValue}" ` : "Все кроссовки"}</h1>
          <div className={styles.search}>
 
-            <img width={17} height={17} src="/sneakers-react/img/search.svg" alt="search" />
+            <Search />
+            {searchValue &&
+               <button onClick={onClear}>
 
-            {searchValue && <img onClick={onClear} className={styles.clear}
-               src="/sneakers-react/img/btn-delete.svg" alt="clear" />}
-
-            <input onChange={searchItem} value={searchValue} placeholder='Поиск...' />
+                  <Delete className={styles.clear} />
+               </button>
+            }
+            <input onChange={searchItem} value={searchValue} placeholder="Поиск..." />
 
          </div>
       </div>
 
-   )
+   );
 }
 
-export default Title
+export default Title;

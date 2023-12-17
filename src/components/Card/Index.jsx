@@ -1,22 +1,25 @@
 import React from 'react';
 import ContentLoader from "react-content-loader";
-
-import AppContext from '../../context'
+import { ReactComponent as Check } from '../../assets/img/check.svg';
+import { ReactComponent as Cross } from '../../assets/img/cross.svg';
+import { ReactComponent as Heart } from '../../assets/img/heart.svg';
+import { ReactComponent as LikeHeart } from '../../assets/img/like-heart.svg';
+import AppContext from '../../context';
 import styles from './Card.module.scss';
 
 function Card({ url, name, price, id, onAddToFavorite, onAddToCard,
-   isFavorite = false, loading, }) {
+   isFavorite = false, loading }) {
    const [isLike, setIsLike] = React.useState(isFavorite);
-   const { isItemAddedCart } = React.useContext(AppContext)
-   const item = { url, parentId:id, name, price, id }
+   const { isItemAddedCart } = React.useContext(AppContext);
+   const item = { url, parentId: id, name, price, id };
 
    const onClickPlus = () => {
-      onAddToCard(item)
-   }
+      onAddToCard(item);
+   };
    const onClickHeart = () => {
-      setIsLike(!isLike)
-      onAddToFavorite(item)
-   }
+      setIsLike(!isLike);
+      onAddToFavorite(item);
+   };
    return (
       <div className={styles.sneakers} >
          {loading ? (
@@ -40,9 +43,7 @@ function Card({ url, name, price, id, onAddToFavorite, onAddToCard,
          ) : (<>
             {onAddToFavorite &&
                <button className={styles.button_like} onClick={onClickHeart}>
-                  {<img width={20} height={20} alt="choice" src=
-                     {isLike ? "sneakers-react/img/like-heart.svg"
-                        : "sneakers-react/img/heart.svg"} />}
+                  {isLike ? <LikeHeart /> : <Heart />}
                </button>}
             <img src={url} width="100%" height={130} alt={name} />
             <h5>{name}</h5>
@@ -53,10 +54,9 @@ function Card({ url, name, price, id, onAddToFavorite, onAddToCard,
                </div>
                <>{onAddToCard &&
                   <button className={styles.button_choice} onClick={onClickPlus}>
-                     <img width={17} height={17} alt="choice" src=
-                        {
-                           isItemAddedCart(id) ? "sneakers-react/img/check.svg" : "sneakers-react/img/cross.svg"
-                        } />
+
+                     {isItemAddedCart(id) ? <Check /> : <Cross />}
+
                   </button>}</>
             </div>
          </>)}
